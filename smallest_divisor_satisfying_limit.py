@@ -47,10 +47,11 @@ n <= threshold <= 10^6
 
 class Solution:
   def smallestDivisor(self, n, nums, limit):
-    md = max(nums):
-    for d in range(1,md+1):
-      out = []
-      for num in nums:
-        cal = -(-num//d)
-        if cal <= limit:
-          return d
+    left, right = 1, max(nums)
+    while left < right:
+        mid = (left + right) // 2
+        if sum((num - 1) // mid + 1 for num in nums) > limit:
+            left = mid + 1
+        else:
+            right = mid
+    return left
