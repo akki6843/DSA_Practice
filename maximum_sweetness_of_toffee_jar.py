@@ -36,33 +36,32 @@ Constraints
 2 <= k <= n <= 10^5
 
 1 <= price[i] <= 10^9
+
+
+6 13 5 1 8 21 2 4
 """
 class Solution:
   def maximumSweetness(self, n, price, k):
-    price.sort(reverse=True)
-    diffs = []
+    price.sort()
+    max_sweetness = 0
+
     for i in range(n-k+1):
-      diff = abs(price[i + k - 1] - price[i])
-      diffs.append(diff)
-    diffs.sort()
-    return max(diffs[:k]), diffs
+      selected_toffees = price[i:i+k]
+      sweetness = min(selected_toffees[j] - selected_toffees[j-1] for j in range(1, len(selected_toffees)))
+      max_sweetness = max(max_sweetness, sweetness)
+    return max_sweetness
   
 if __name__=="__main__":
   print("Hello")
-#   n = 6
-#   price = [13,5,1,8,21,2]
-#   k = 3
 
-#   n = 6
-#   price = [13,5,1,8,21,2]
-#   k = 4
+  # n = 6
+  # price = [13,5,1,8,21,2]
+  # k = 4
 
-# #   n = 3
-# #   price = [1,3,1]
-# #   k = 2  
+  n = 3
+  price = [1,3,1]
+  k = 2  
 
-#   S = Solution()
-#   out = S.maximumSweetness(n,price, k)
-#   print(out)
-a = 2.5
-print(ceil(a))
+  S = Solution()
+  out = S.maximumSweetness(n,price, k)
+  print(out)
