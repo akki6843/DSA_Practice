@@ -5,7 +5,7 @@ Find the maximum product of two integers in an array where all elements are posi
 
 """
 
-arr = [1, 7, 3, 4, 9, 5]
+arr = [0,2,1]
 
 def partition(arr, low, high):
     pivot = arr[high]
@@ -16,16 +16,6 @@ def partition(arr, low, high):
             arr[i], arr[j] = arr[j], arr[i]
     arr[i+1], arr[high] = arr[high], arr[i+1]
     return i+1
-
-# def partition(arr, low, high):
-#     pivot = arr[high]
-#     i = -1
-#     for j in range(high):
-#         if arr[i]<pivot:
-#             i+=1
-#             arr[i], arr[j] = arr[j], arr[i]
-#     arr[i+1], arr[high] = arr[high], arr[i+1]
-#     return i+1
 
 def quick(arr, low, high):
     if low < high:

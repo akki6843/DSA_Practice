@@ -28,7 +28,19 @@ Constraints :
 
 class Solution:
     def is_zero(self, arr, N):
-        pass
+        prefix_sum_map = {}
+        prefix_sum = 0
+    
+        for i in range(len(arr)):
+            prefix_sum += arr[i]
+        
+            if prefix_sum == 0 or prefix_sum in prefix_sum_map:
+                return "Yes"
+        
+            prefix_sum_map[prefix_sum] = i
+    
+        return "No"
+            
 
 
 if __name__=="__main__":
@@ -36,6 +48,7 @@ if __name__=="__main__":
 
     S = Solution()
     N = 7
-    arr = [1, 4, -2, -2, 5, -4, 3]
+    # arr = [10, 6, 32, 3980, -8, 39, 40, 51, 2, 4, 11]
+    arr = [10, 6, 32, 3980, -8, 39, 40, 51, 2, 4, 11]
     out = S.is_zero(arr, N)
     print(out)
